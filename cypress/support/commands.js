@@ -23,3 +23,33 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+const url = Cypress.env('baseUrl');
+
+
+//should sccuessful login 
+Cypress.Commands.add('originLogin', (username, password) => {
+      cy.visit(url);
+      cy.url().should('include', 'https://opensource-demo.orangehrmlive.com/web/index.php/auth/login');
+      cy.contains(' Login ').should('contain', ' Login ').click()
+      cy.contains('Required').should('contain', 'Required')
+      cy.get('[name="username"]').type(username);
+      cy.get('[placeholder="Password"]').type(password);
+      cy.contains(' Login ').should('contain', ' Login ').click()
+
+
+
+
+})
+//should not login sccuessful 
+Cypress.Commands.add('originLoginnotlogin', (usernamesecond, passwordsecond) => {
+      cy.visit(url);
+      cy.url().should('include', 'https://opensource-demo.orangehrmlive.com/web/index.php/auth/login');
+      cy.contains(' Login ').should('contain', ' Login ').click()
+      cy.contains('Required').should('contain', 'Required')
+      cy.get('[name="username"]').type(usernamesecond);
+      cy.get('[placeholder="Password"]').type(passwordsecond);
+      cy.contains(' Login ').should('contain', ' Login ').click()
+      cy.contains('Invalid credentials').should('contain', 'Invalid credentials')
+
+
+})

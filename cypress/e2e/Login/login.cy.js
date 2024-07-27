@@ -1,12 +1,23 @@
-// Environment variables for URLs and credentials
+/// <reference types="cypress" />
 
 // const url = Cypress.env('baseUrl');
+const username = 'Admin'
+const password = 'admin123'
+const usernamesecond = 'admin343'
+const passwordsecond = 'admin'
 
-const url = Cypress.env('baseUrl');
 
-describe('', () => {
-  it('passes', () => {
-    cy.visit(url); // Use the 'url' variable here
+describe('Login', () => {
+  // before(() => {
+  //   cy.originLogin(username, password)
+  // })
+  it('should not successfuly login', () => {
+    // cy.visit(url); // Use the 'url' variable here
+    cy.originLoginnotlogin(usernamesecond, passwordsecond);
+  });
+  it('should be successfuly login', () => {
+    // cy.visit(url); // Use the 'url' variable here
+    cy.originLogin(username, password);
   });
 });
 
