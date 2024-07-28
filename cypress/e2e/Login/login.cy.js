@@ -9,15 +9,14 @@ const passwordsecond = 'admin'
 
 
 describe('Login', () => {
-  before(() => {
-    cy.originLogin(username, password)
-  })
-  // it('should not successfuly login', () => {
-  //   cy.originLoginnotlogin(usernamesecond, passwordsecond);
-  // });
+  // before(() => {
+  //   cy.originLogin(username, password)
+  // })
+  it('should not successfuly login', () => {
+    cy.originLoginnotlogin(usernamesecond, passwordsecond);
+  });
   it('should be successfuly login', () => {
     cy.originLogin(username, password);
-    // cy.get('.oxd-layout-context').should('be.visible')
     cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index')
     cy.contains(loginone.headers).should('contain', 'Dashboard')
     // site bar 
@@ -34,7 +33,14 @@ describe('Login', () => {
     cy.contains(loginone.Claim).should('contain', 'Claim')
     cy.contains(loginone.Buzz).should('contain', 'Buzz')
 
+    cy.scrollTo('bottom', { duration: 2000 })
+
+    cy.scrollTo('top', { duration: 3000 })
+
+
 
   });
+
+
 });
 
